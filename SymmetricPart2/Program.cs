@@ -17,22 +17,22 @@ namespace SymmetricPart2
                 userOptionInput = Console.ReadLine();
 
 
-                if (userOptionInput == "symmetric key encryption")
+
+                if (userOptionInput.Equals("symmetric key encryption",StringComparison.OrdinalIgnoreCase )) //userOptionInput == "symmetric key encryption")
                 {
                     encryptPassword();
                 }
-                else if (userOptionInput == "password hashing")
+                else if (userOptionInput.Equals("password hashing",StringComparison.OrdinalIgnoreCase))//== "password hashing")
                 {
                     hashPassword();
                 }
-                else if (userOptionInput != "symmetric key encryption" || userOptionInput == "password hashing")
+                else if (userOptionInput.Equals("exit",StringComparison.OrdinalIgnoreCase) )//== "exit program")
                 {
-                    Console.WriteLine("PLease enter a valid input such as (symmetric key encrption), (password hashing) or (exit) to close the program.");
+                    endProgram();
                 }
-
-                if (userOptionInput == "exit")
+                else if (userOptionInput.ToLower() != "symmetric key encryption" || userOptionInput.ToLower() == "password hashing" || userOptionInput.ToLower() == "exit")
                 {
-                    Environment.Exit(0);
+                    Console.WriteLine("PLease enter a valid input such as (symmetric key encrption), (password hashing) or (exit).");
                 }
 
             }
@@ -74,6 +74,11 @@ namespace SymmetricPart2
                 Console.WriteLine("Failed Login");
             }
 
+        }
+
+        public static void endProgram()
+        {
+                Environment.Exit(0);
         }
 
     }
